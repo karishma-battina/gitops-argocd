@@ -1,2 +1,3 @@
-# gitops-k8s-cluster
-Set up a Kubernetes cluster managed through a GitOps workflow.
+# gitops-argocd
+
+Set up a Kubernetes deployment in Azure managed through a GitOps workflow.
