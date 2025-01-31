@@ -41,6 +41,7 @@ jobs:
       id: install-kubectl
       uses: azure/setup-kubectl@v4.0.0
     
+    # Should we run this only once, during argocd setup?
     - name: Apply Argo CD Application
       run: |
         kubectl apply -f argocd.yml -n argocd
@@ -52,3 +53,7 @@ jobs:
         namespace: 'argocd'
         manifests: |
            app/manifests/hello-world.yml
+
+
+# Next step: Deploy app to pull image from ACR
+# Whenever a new image version is pushed, deployment should be automatically updated to use that new image
