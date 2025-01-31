@@ -10,6 +10,6 @@ spec:
     path: app/manifests
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argocd
   syncPolicy:
     automated: {}
