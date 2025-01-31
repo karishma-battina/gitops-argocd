@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/karishma-battina/gitops-argocd
     targetRevision: main
-    path: manifests
+    path: app/manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: default

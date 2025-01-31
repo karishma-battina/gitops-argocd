@@ -1,0 +1,50 @@
+
+name: 'Build on AKS'
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: 'Build'
+    runs-on: ubuntu-latest
+    environment: production
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Azure Login
+      uses: Azure/login@v2.2.0
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Set AKS context
+      id: set-context
+      uses: azure/aks-set-context@v3.0
+      with:
+        resource-group: '${{ secrets.resource_group }}' 
+        cluster-name: '${{ secrets.cluster_name }}'
+
+    - name: Setup kubectl
+      id: install-kubectl
+      uses: azure/setup-kubectl@v4.0.0
+
+    - name: Deploy to AKS
+      id: deploy-aks
+      uses: Azure/k8s-deploy@v5
+      with:
+        namespace: 'default'
+        manifests: |
+           manifests/hello-world.yml
