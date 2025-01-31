@@ -45,6 +45,6 @@ jobs:
       id: deploy-aks
       uses: Azure/k8s-deploy@v5
       with:
-        namespace: 'default'
+        namespace: 'argocd'
         manifests: |
            app/manifests/hello-world.yml
