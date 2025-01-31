@@ -42,8 +42,8 @@ jobs:
       uses: azure/setup-kubectl@v4.0.0
     
     - name: Apply Argo CD Application
-        run:
-          kubectl apply -f argocd.yaml -n argocd
+      run: |
+        kubectl apply -f argocd.yaml -n argocd
 
     - name: Deploy to AKS
       id: deploy-aks
