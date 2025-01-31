@@ -43,7 +43,7 @@ jobs:
     
     - name: Apply Argo CD Application
         run: |
-          kubectl apply -f argocd.yaml
+          kubectl apply -f argocd.yaml -n argocd
 
     - name: Deploy to AKS
       id: deploy-aks
