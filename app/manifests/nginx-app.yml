@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: argocd
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: kacr3105.azurecr.io/nginx:v1.0
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+          
+---
+# website::tag::3:: Expose the Python webapp on port 5000 via a Kubernetes LoadBalancer.
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+  namespace: argocd
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      targetPort: 80
+      port: 80
+  type: LoadBalancer
+
+---
+#Create secret for ACR login
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJrYWNyMzEwNS5henVyZWNyLmlvIjp7InVzZXJuYW1lIjoiNTcwMDhkOWMtYjU4YS00NGYyLTgxOWUtN2UyYTBkOTBmZDJkIiwicGFzc3dvcmQiOiJSWmI4UX5xQUx1YkdCTXF1NGx5YUR+OGJtaDA4RHBqTGh6cGxjYWpxIiwiYXV0aCI6Ik5UY3dNRGhrT1dNdFlqVTRZUzAwTkdZeUxUZ3hPV1V0TjJVeVlUQmtPVEJtWkRKa09sSmFZamhSZm5GQlRIVmlSMEpOY1hVMGJIbGhSSDQ0WW0xb01EaEVjR3BNYUhwd2JHTmhhbkU9In19fQ==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: acr-secret
+type: kubernetes.io/dockerconfigjson
