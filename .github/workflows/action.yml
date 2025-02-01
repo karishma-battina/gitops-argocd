@@ -53,8 +53,9 @@ jobs:
     # Should we run this only once, during argocd setup?
     - name: Apply Argo CD Application
       id: apply-argocd
-      if: ${{ github.event_name == 'push' && contains(github.event.changes, 'argocd.yml') }} 
+    #  if: ${{ github.event_name == 'push' && contains(github.event.changes, 'argocd.yml') }} 
       run: |
+        echo ${{ github.event.changes }}
         kubectl apply -f argocd.yml -n argocd
 
     #- name: Deploy to AKS
