@@ -1,0 +1,21 @@
+{
+    // Name this configuration
+    "name": "Codespace for Argocd project",
+    // Use the base codespace image
+    "image": "mcr.microsoft.com/vscode/devcontainers/universal:latest",
+  
+    "remoteUser": "codespace",
+    "overrideCommand": false
+     ,
+   // Add the IDs of extensions you want installed when the container is created.
+   "customizations": {
+       "vscode": {
+           "extensions": [
+               "GitHub.copilot"
+           ]
+       },
+},
+"features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {}
+}
+  }
