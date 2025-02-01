@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: kacr3105.azurecr.io/nginx:v1.0
+          image: kacr3105.azurecr.io/nginx:v1.1
           ports:
             - containerPort: 80
       imagePullSecrets:
