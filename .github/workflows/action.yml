@@ -37,22 +37,29 @@ jobs:
         resource-group: '${{ secrets.resource_group }}' 
         cluster-name: '${{ secrets.cluster_name }}'
 
-    - name: Setup kubectl
-      id: install-kubectl
-      uses: azure/setup-kubectl@v4.0.0
+    - name: Docker image build
+      id: build-image
+      run: |
+        docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0 .
+        docker login ${{ secrets.container_registry_name }}.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}
+        docker push ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0
+
+    #- name: Setup kubectl
+    #  id: install-kubectl
+    #  uses: azure/setup-kubectl@v4.0.0
     
     # Should we run this only once, during argocd setup?
-    - name: Apply Argo CD Application
-      run: |
-        kubectl apply -f argocd.yml -n argocd
+    #- name: Apply Argo CD Application
+    #  run: |
+    #    kubectl apply -f argocd.yml -n argocd
 
-    - name: Deploy to AKS
-      id: deploy-aks
-      uses: Azure/k8s-deploy@v5
-      with:
-        namespace: 'argocd'
-        manifests: |
-           app/manifests/hello-world.yml
+    #- name: Deploy to AKS
+    #  id: deploy-aks
+    #  uses: Azure/k8s-deploy@v5
+    #  with:
+    #    namespace: 'argocd'
+    #    manifests: |
+    #       app/manifests/hello-world.yml
 
 
 # Next step: Deploy app to pull image from ACR
