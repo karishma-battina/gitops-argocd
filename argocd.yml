@@ -13,3 +13,6 @@ spec:
     namespace: argocd
   syncPolicy:
     automated: {}
+  # Rollback to previous version if sync fails
+  rollback:
+    enabled: true
