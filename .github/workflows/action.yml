@@ -40,7 +40,7 @@ jobs:
     - name: Docker image build
       id: build-image
       if: ${{ github.event_name == 'push' && contains(github.event.changes, 'app/Dockerfile') }} 
-    run: |
+      run: |
         echo "Dockerfile has changed. Running Docker build and push ..."
         docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0 app/
         docker login ${{ secrets.container_registry_name }}.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}
