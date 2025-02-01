@@ -40,7 +40,7 @@ jobs:
     - name: Docker image build
       id: build-image
       run: |
-        docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0 .
+        docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0 app/
         docker login ${{ secrets.container_registry_name }}.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}
         docker push ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0
 
