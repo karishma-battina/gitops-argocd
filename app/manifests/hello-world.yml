@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginxdemos/hello
+          image: kacr3105.azurecr.io/nginx:v1.0
           ports:
             - containerPort: 80
 ---
