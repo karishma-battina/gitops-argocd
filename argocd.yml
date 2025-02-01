@@ -17,6 +17,3 @@ spec:
       prune: true,
       selfHeal: true
     }
-  # Rollback to previous version if sync fails
-  rollback:
-    enabled: true
