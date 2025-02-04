@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  push:
+  pull_request:
     branches:
       - test
 
@@ -23,7 +23,9 @@ jobs:
         uses: tj-actions/changed-files@v45
         # To compare changes between the current commit and the last pushed remote commit set `since_last_remote_commit: true`. e.g
         # with:
-        #   since_last_remote_commit: true 
+        #   since_last_remote_commit: true
+        run: |
+          echo ${{ github.event.changes }}
 
       - name: List all changed files
         env:
