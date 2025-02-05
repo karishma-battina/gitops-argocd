@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../base
+patchesStrategicMerge:
+  - patch.yaml
+namePrefix: prod-
+commonLabels:
+  env: prod
+images:
+  - name: nginx
+    newTag: 1.25.3 

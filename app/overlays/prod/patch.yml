@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2  # High availability in prod
+  template:
+    spec:
+      containers:
+        - name: nginx
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
