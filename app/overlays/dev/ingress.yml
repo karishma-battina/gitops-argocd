@@ -5,7 +5,7 @@ metadata:
   name: nginx-ingress
 spec:
   rules:
-  - host: 128.203.219.86
+  - host: "example.com"
     http:
       paths:
       - path: /dev
