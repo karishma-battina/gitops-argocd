@@ -34,7 +34,7 @@ spec:
     - protocol: TCP
       targetPort: 80
       port: 80
-  type: LoadBalancer
+  type: ClusterIP
 
 ---
 #Create secret for ACR login
