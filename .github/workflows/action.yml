@@ -42,7 +42,7 @@ jobs:
       if: ${{ github.event_name == 'push' && contains(github.event.changes, 'app/Dockerfile') }} 
       run: |
         echo "Dockerfile has changed. Running Docker build and push ..."
-        docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0 app/
+        docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.2 app/
         docker login ${{ secrets.container_registry_name }}.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}
         docker push ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0
 
@@ -53,9 +53,9 @@ jobs:
     # Should we run this only once, during argocd setup?
     - name: Apply Argo CD Application
       id: apply-argocd
-      if: ${{ github.event_name == 'push' && contains(github.event.changes, 'argocd.yml') }} 
-      run: |
-        echo ${{ github.event.changes }}
+    #  if: ${{ github.event_name == 'push' && contains(github.event.changes, 'argocd.yml') }} 
+      run:
+      #  echo ${{ github.event.changes }}
         kubectl apply -f argocd.yml -n argocd
 
     #- name: Deploy to AKS

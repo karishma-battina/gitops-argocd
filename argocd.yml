@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/karishma-battina/gitops-argocd
     targetRevision: main
-    path: app/manifests
+    path: app/overlays/dev
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
