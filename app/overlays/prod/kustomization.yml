@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: prod
 bases:
   - ../../base
 patchesStrategicMerge:
@@ -9,4 +10,4 @@ commonLabels:
   env: prod
 images:
   - name: nginx
-    newTag: 1.25.3 
+    newTag: 1.2

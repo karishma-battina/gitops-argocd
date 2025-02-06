@@ -10,7 +10,7 @@ spec:
     path: app/overlays/dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: dev
   # Sync the application
   syncPolicy:
     automated: {
