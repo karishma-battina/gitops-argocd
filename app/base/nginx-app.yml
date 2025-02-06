@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: argocd
 spec:
   selector:
     matchLabels:
@@ -28,7 +27,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: nginx-service
-  namespace: argocd
 spec:
   selector:
     app: nginx
