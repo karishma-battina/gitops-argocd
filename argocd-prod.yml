@@ -13,6 +13,8 @@ spec:
     namespace: prod
   # Sync the application
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated: {
       prune: true,
       selfHeal: true

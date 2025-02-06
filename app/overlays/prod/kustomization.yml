@@ -9,5 +9,5 @@ namePrefix: prod-
 commonLabels:
   env: prod
 images:
-  - name: nginx
-    newTag: 1.2
+  - name: kacr3105.azurecr.io/nginx
+    newTag: v1.2
