@@ -20,7 +20,8 @@ metadata:
   name: nginx-ingress
 spec:
   rules:
-  - http:
+  - host: 128.203.219.86
+    http:
       paths:
       - path: /prod
         pathType: Prefix
