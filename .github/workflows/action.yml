@@ -44,7 +44,7 @@ jobs:
         echo "Dockerfile has changed. Running Docker build and push ..."
         docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.2 app/
         docker login ${{ secrets.container_registry_name }}.azurecr.io -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }}
-        docker push ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.0
+        docker push ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.2
 
     - name: Setup kubectl
       id: install-kubectl
