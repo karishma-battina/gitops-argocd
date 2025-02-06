@@ -3,7 +3,7 @@ kind: Kustomization
 bases:
   - ../../base
 patchesStrategicMerge:
-  - patch.yaml
+  - patch.yml
 namePrefix: prod-
 commonLabels:
   env: prod
