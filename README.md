@@ -6,7 +6,7 @@ This repository demonstrates GitOps practices using Argo CD to automate Kubernet
 
 - An AKS cluster deployed on Azure.
 - Azure Container Registry (ACR) configured and accessible from your AKS cluster.
-- Argo CD installed and running in AKS cluster.  (Mention how it was installed - e.g., via Helm, manifests, etc.)
+- Argo CD installed and running in AKS cluster. (Setup as part of the project [terraform-aks](https://github.com/karishma-battina/terraform-aks))
  
 
 ## Project Overview
@@ -26,16 +26,12 @@ This project uses Argo CD to automate the deployment of an NGINX application to 
 
 ## GitOps Workflow
 
-Git Repository Changes (dev/prod) 
-       │
-       ▼
-Argo CD Detects Drift 
-       │
-       ▼
-Automatic Cluster Sync 
-       │
-       ▼
-Updated NGINX Deployment
+```mermaid
+graph LR;
+A[Git Repository Changes (dev/prod)] --> B(Argo CD Detects Drift)
+B --> C{Automatic Cluster Sync}
+C --> D[Updated NGINX Deployment]
+```
 
 
 ## Directory Structure
@@ -65,4 +61,4 @@ Updated NGINX Deployment
 2. **Deploy with Kubernetes Manifests**: The `nginx-app.yml` deployment pulls the image from ACR and runs it on AKS.  
 3. **Automated Sync with Argo CD**: Any changes made to the dev and prod manifests in the Git repository are automatically detected and applied to the cluster by Argo CD.
 
-![ArgoCD UI](https://github.com/karishma-battina/gitops-argocd/blob/main/argocd-ui.jpg?raw=true)
+![ArgoCD UI](https://github.com/karishma-battina/gitops-argocd/blob/main/argocd-ui.png?raw=true)
