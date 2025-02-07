@@ -28,7 +28,7 @@ This project uses Argo CD to automate the deployment of an NGINX application to 
 
 ```mermaid
 graph TD;
-    A[Git Repository Changes (dev/prod)-->B[Argo CD Detects Drift];
+    A[Git Repository Changes (dev/prod)]-->B[Argo CD Detects Drift];
     B-->C[Automatic Cluster Sync];
     C-->D[Updated NGINX Deployment];
 ```
