@@ -1,3 +1,4 @@
+# argocd file to deploy the application in prod namespace
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
