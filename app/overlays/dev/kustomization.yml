@@ -4,7 +4,6 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - patch.yml
-  - ingress.yml
 namePrefix: dev-
 commonLabels:
   env: dev
