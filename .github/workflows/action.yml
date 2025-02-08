@@ -39,7 +39,7 @@ jobs:
 
     - name: Docker image build
       id: build-image
-      if: ${{ github.event_name == 'push' && contains(github.event.changes, 'app/Dockerfile') }} 
+    #  if: ${{ github.event_name == 'push' && contains(github.event.changes, 'app/Dockerfile') }} 
       run: |
         echo "Dockerfile has changed. Running Docker build and push ..."
         docker build -t ${{ secrets.container_registry_name }}.azurecr.io/nginx:v1.3 app/
@@ -61,3 +61,4 @@ jobs:
 
 
 # Next steps:
+# 1. Fix condition in Docker build step
