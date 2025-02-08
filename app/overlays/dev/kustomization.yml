@@ -7,3 +7,6 @@ patchesStrategicMerge:
 namePrefix: dev-
 commonLabels:
   env: dev
+images:
+  - name: kacr3105.azurecr.io/nginx
+    newTag: v1.3
